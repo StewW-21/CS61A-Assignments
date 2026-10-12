@@ -1,3 +1,14 @@
-# Ignore macOS system files used to store folder metadata
+# macOS
 .DS_Store
 
+# Python
+__pycache__/
+*.pyc
+
+# ok client state
+.ok_history
+.ok_storage
+
+# VS Code / Code Runner temp
+tempCodeRunnerFile.*
+.vscode/
