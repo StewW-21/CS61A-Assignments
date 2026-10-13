@@ -5,9 +5,8 @@
 __pycache__/
 *.pyc
 
-# ok client state
-.ok_history
-.ok_storage
+# ok client state (.ok_history / .ok_storage / .ok_disabled / .ok_consent ...)
+.ok_*
 
 # VS Code / Code Runner temp
 tempCodeRunnerFile.*
