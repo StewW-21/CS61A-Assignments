@@ -191,7 +191,9 @@ def always_roll(n):
     """
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
-    "*** YOUR CODE HERE ***"
+    def awsroll(score, opponent_score):
+        return n
+    return awsroll
     # END PROBLEM 6
 
 
@@ -225,7 +227,13 @@ def is_always_roll(strategy, goal=GOAL):
     False
     """
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
+    ori=strategy(0,0)
+    for i in range (0,goal):
+        for j in range (0,goal):
+            if ori !=strategy(i,j):
+                return False
+    return True
+        
     # END PROBLEM 7
 
 
@@ -241,7 +249,13 @@ def make_averaged(original_function, times_called=1000):
     3.0
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
+
+    def averaged(*args):
+        total=0
+        for i in range (times_called):
+            total+=original_function(*args)
+        return total/times_called
+    return averaged
     # END PROBLEM 8
 
 
@@ -254,7 +268,14 @@ def max_scoring_num_rolls(dice=six_sided, times_called=1000):
     1
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
+    largest=0
+    answer=1
+    for i in range (1,11):
+        avg=make_averaged(roll_dice, times_called)(i,dice)
+        if largest<avg:
+            largest=avg
+            answer=i
+    return answer
     # END PROBLEM 9
 
 
