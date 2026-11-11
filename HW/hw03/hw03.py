@@ -24,8 +24,12 @@ def num_eights(n):
     ...       ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'For', 'While'])
     True
     """
-    "*** YOUR CODE HERE ***"
-
+    if n == 0:
+        return 0
+    if n%10 == 8:
+        return 1+num_eights(n//10)
+    else:
+        return 0+num_eights(n//10)
 
 def digit_distance(n):
     """Determines the digit distance of n.
@@ -46,7 +50,10 @@ def digit_distance(n):
     ...       ['For', 'While'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    if n//10==0:
+        return 0
+    if n//10>0:
+        return abs(n%10-(n//10)%10)+digit_distance(n//10)
 
 
 def interleaved_sum(n, odd_func, even_func):
@@ -70,7 +77,12 @@ def interleaved_sum(n, odd_func, even_func):
     >>> check(HW_SOURCE_FILE, 'interleaved_sum', ['BitAnd', 'BitOr', 'BitXor']) # ban bitwise operators, don't worry about these if you don't know what they are
     True
     """
-    "*** YOUR CODE HERE ***"
+    def helper_sum(k,odd,even):
+        if k>n:
+            return 0
+        return odd(k)+helper_sum(k+1,even,odd)
+    return helper_sum(1,odd_func,even_func)
+
 
 
 def next_smaller_dollar(bill):
@@ -106,7 +118,16 @@ def count_dollars(total):
     >>> check(HW_SOURCE_FILE, 'count_dollars', ['While', 'For'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    def helper(total,k):
+        if total==0:
+            return 1
+        if total<0:
+            return 0
+        if k == 1:
+            return 1
+        return (helper(total-k,k)+helper(total,next_smaller_dollar(k)))
+    return helper(total,100)
+        
 
 
 def next_larger_dollar(bill):
@@ -163,6 +184,8 @@ def move_stack(n, start, end):
 
     >>> move_stack(1, 1, 3)
     Move the top disk from rod 1 to rod 3
+
+        
     >>> move_stack(2, 1, 3)
     Move the top disk from rod 1 to rod 2
     Move the top disk from rod 1 to rod 3
@@ -171,6 +194,8 @@ def move_stack(n, start, end):
     Move the top disk from rod 1 to rod 3
     Move the top disk from rod 1 to rod 2
     Move the top disk from rod 3 to rod 2
+
+
     Move the top disk from rod 1 to rod 3
     Move the top disk from rod 2 to rod 1
     Move the top disk from rod 2 to rod 3
